@@ -44,15 +44,14 @@ animalSelect.addEventListener("change", function () {
   }
   if (fotoAnimal != "" && fotoAnimal != "undefined" && fotoAnimal != "null") {
     foto.src = fotoAnimal;
-      foto.alt = selectedOption.text;
-      foto.classList
+    foto.alt = selectedOption.text;
+    foto.classList;
   }
 });
 
 edad.addEventListener("change", function () {
   let selectedOption = this.options[edad.selectedIndex];
   ageAnimal = selectedOption.value;
-  console.log(ageAnimal);
 });
 
 function validarFormulario(name, age, comment) {
