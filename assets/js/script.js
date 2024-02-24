@@ -2,26 +2,57 @@ import Animal from "./animal.js";
 //import Sonidos from "./sonidos.js";
 
 const animal = new Animal();
-const select = document.getElementById("animal");
+const animalSelect = document.getElementById("animalSelect");
 const edad = document.getElementById("edad");
 const comentario = document.getElementById("comentarios");
 const agregar = document.getElementById("btnRegistrar");
-
+const foto = document.getElementById("foto");
+/* const tarjeta =Document.getElementByclass("tarjeta"); */
+let fotoAnimal = "";
 let nameAnimal = "";
 let ageAnimal = "";
 let constrAlert = "";
 let validar = false;
 
-//se determina que animal escogio el usuario
-select.addEventListener("change", function () {
-  let selectedOption = this.options[select.selectedIndex];
+animalSelect.addEventListener("change", function () {
+  let selectedOption = this.options[animalSelect.selectedIndex];
   nameAnimal = selectedOption.value;
+  switch (nameAnimal) {
+    case "Leon": {
+      fotoAnimal = "./assets/imgs/Leon.png";
+      break;
+    }
+    case "Lobo": {
+      fotoAnimal = "./assets/imgs/Lobo.jpg";
+      break;
+    }
+    case "Oso": {
+      fotoAnimal = "./assets/imgs/Oso.jpg";
+      break;
+    }
+    case "Serpiente": {
+      fotoAnimal = "./assets/imgs/Serpiente.jpg";
+      break;
+    }
+    case "Aguila": {
+      fotoAnimal = "./assets/imgs/Aguila.png";
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+  if (fotoAnimal != "" && fotoAnimal != "undefined" && fotoAnimal != "null") {
+    foto.src = fotoAnimal;
+      foto.alt = selectedOption.text;
+      foto.classList
+  }
 });
 
-//se determina el rango de edad que ingreso el usuario
 edad.addEventListener("change", function () {
   let selectedOption = this.options[edad.selectedIndex];
   ageAnimal = selectedOption.value;
+  console.log(ageAnimal);
 });
 
 function validarFormulario(name, age, comment) {
@@ -38,17 +69,16 @@ function validarFormulario(name, age, comment) {
     validar = true;
   } else {
     alert(constrAlert);
+    constrAlert = "";
   }
 }
 
 agregar.addEventListener("click", () => {
-    if (validar == false) {
-        validarFormulario(nameAnimal, ageAnimal, comentario.value);
-     }
-    else {  
-        animal.name = nameAnimal;
-        animal.age = ageAnimal;
-        animal.comment = comentario.value;
-    }
+  if (validar == false) {
+    validarFormulario(nameAnimal, ageAnimal, comentario.value);
+  } else {
+    animal.name = nameAnimal;
+    animal.age = ageAnimal;
+    animal.comment = comentario.value;
+  }
 });
-
