@@ -1,4 +1,4 @@
-class animal {
+class Animal {
     constructor(name,age, image,comment, sound) {
         this._name = name;
         this._age = age;
@@ -37,3 +37,8 @@ class animal {
         this._sound = sound;
     }
 }
+
+class sonidos extends Animal {
+    
+}
+export default Animal
