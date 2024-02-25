@@ -7,6 +7,7 @@ const edad = document.getElementById("edad");
 const comentario = document.getElementById("comentarios");
 const agregar = document.getElementById("btnRegistrar");
 const foto = document.getElementById("foto");
+const animales=document.getElementById("animales");
 /* const tarjeta =Document.getElementByclass("tarjeta"); */
 let fotoAnimal = "";
 let nameAnimal = "";
@@ -78,6 +79,15 @@ agregar.addEventListener("click", () => {
   } else {
     animal.name = nameAnimal;
     animal.age = ageAnimal;
-    animal.comment = comentario.value;
+      animal.comment = comentario.value;
+      agregarAnimalEstudio ()
   }
 });
+
+function agregarAnimalEstudio() { 
+    let contenedor = document.createElement ("div class='card' style='width: 18rem;'>");
+    let fotoAnimal = document.createElement("img class='card-img-top' src='./assets/imgs/Leon.png' alt='${animal.name'></img>");
+    animales.appendChild (contenedor,fotosAnimal);
+      /*   <div class="card" style="width: 18rem;"> */
+  {/* <img class="card-img-top" src="./assets/imgs/Leon.png" alt="Card image cap"></img> */}
+}
