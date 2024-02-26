@@ -1,5 +1,5 @@
 import Animal from "./animal.js";
-//import Sonidos from "./sonidos.js";
+import Sonidos from "./sonidos.js";
 
 const animal = new Animal();
 const animalSelect = document.getElementById("animalSelect");
@@ -8,7 +8,13 @@ const comentario = document.getElementById("comentarios");
 const agregar = document.getElementById("btnRegistrar");
 const foto = document.getElementById("foto");
 const animales = document.getElementById("Animales");
-/* const tarjeta =Document.getElementByclass("tarjeta"); */
+/* const btnleon = document.getElementById("btnleon");
+const btnlobo = document.getElementById("btnlobo");
+const btnaguila = document.getElementById("btnaguila");
+const btnoso = document.getElementById("btnoso");
+const btnserpiente = document.getElementById("btnserpiente"); */
+
+
 let fotoAnimal = "";
 let nameAnimal = "";
 let ageAnimal = "";
@@ -17,34 +23,42 @@ let validar = false;
 
 animalSelect.addEventListener("change", function () {
   let selectedOption = this.options[animalSelect.selectedIndex];
+  let sonidoAnimal = "";
   nameAnimal = selectedOption.value;
   switch (nameAnimal) {
     case "Leon": {
       fotoAnimal = "./assets/imgs/Leon.png";
+      sonidoAnimal = "./assets/sounds/Rugido.mp3";
       break;
     }
     case "Lobo": {
       fotoAnimal = "./assets/imgs/Lobo.jpg";
+      sonidoAnimal = "./assets/sounds/Aullido.mp3";
       break;
     }
     case "Oso": {
       fotoAnimal = "./assets/imgs/Oso.jpg";
+      sonidoAnimal = "./assets/sounds/Grunido.mp3";
       break;
     }
     case "Serpiente": {
       fotoAnimal = "./assets/imgs/Serpiente.jpg";
+      sonidoAnimal = "./assets/sounds/Siseo.mp3";
       break;
     }
     case "Aguila": {
       fotoAnimal = "./assets/imgs/Aguila.png";
+      sonidoAnimal = "./assets/sounds/Chillido.mp3";
       break;
     }
     default: {
+      alert("Animal no encontrado en la lista");
       break;
     }
   }
   if (fotoAnimal != "" && fotoAnimal != "undefined" && fotoAnimal != "null") {
     animal.image = fotoAnimal;
+    animal.sound = sonidoAnimal;
     foto.src = fotoAnimal;
     foto.alt = selectedOption.text;
     foto.classList;
@@ -72,7 +86,11 @@ function validarFormulario(name, age, comment) {
     alert(constrAlert);
     constrAlert = "";
   }
-}
+};
+
+/* btnleon.addEventListener("click", () => {
+    Sonidos.playSound(Animal.sound);
+}); */
 
 agregar.addEventListener("click", () => {
   if (validar == false) {
@@ -88,7 +106,7 @@ agregar.addEventListener("click", () => {
 function agregarAnimalEstudio() {
   let contenedor = "<div class='card' style='width: 18rem;'>";
   let fotoAnimal = `<img class='card-img-top' src='${animal.image}' alt='${animal.name}'></img>`;
-  let botonSonido = `<a href="#" class="btn  w-100"><img src="./assets/imgs/audio.svg" width="50px" height="50px"></img></a>`;
+  let botonSonido = `<a href="#" class="btn w-100"  id='btn${animal.name}'><img src="./assets/imgs/audio.svg" width="50px" height="50px"></img></a>`;
   let cierreContenedor = "</div>";
   animales.insertAdjacentHTML("beforeend", contenedor);
   animales.insertAdjacentHTML("beforeend", fotoAnimal);
