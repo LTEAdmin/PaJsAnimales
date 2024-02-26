@@ -44,6 +44,7 @@ animalSelect.addEventListener("change", function () {
     }
   }
   if (fotoAnimal != "" && fotoAnimal != "undefined" && fotoAnimal != "null") {
+    animal.image = fotoAnimal;
     foto.src = fotoAnimal;
     foto.alt = selectedOption.text;
     foto.classList;
@@ -77,7 +78,7 @@ agregar.addEventListener("click", () => {
   if (validar == false) {
     validarFormulario(nameAnimal, ageAnimal, comentario.value);
   } else {
-    animal.name = nameAnimal;
+    animal.name = nameAnimal.charAt(0).toUpperCase() + nameAnimal.slice(1);
     animal.age = ageAnimal;
     animal.comment = comentario.value;
     agregarAnimalEstudio();
@@ -86,9 +87,12 @@ agregar.addEventListener("click", () => {
 
 function agregarAnimalEstudio() {
   let contenedor = "<div class='card' style='width: 18rem;'>";
-  let fotoAnimal =
-    "<img class='card-img-top' src='./assets/imgs/Leon.png' alt='${animal.name'></img>";
+  let fotoAnimal = `<img class='card-img-top' src='${animal.image}' alt='${animal.name}'></img>`;
+  let botonSonido = `<a href="#" class="btn  w-100"><img src="./assets/imgs/audio.svg" width="50px" height="50px"></img></a>`;
+  let cierreContenedor = "</div>";
   animales.insertAdjacentHTML("beforeend", contenedor);
   animales.insertAdjacentHTML("beforeend", fotoAnimal);
+  animales.insertAdjacentHTML("beforeend", botonSonido);
+  animales.insertAdjacentHTML("beforeend", cierreContenedor);
   /*insertAdjacentenHtml */
 }
